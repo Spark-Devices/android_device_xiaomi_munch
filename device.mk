@@ -9,8 +9,6 @@ TARGET_IS_VAB := true
 
 # Inherit from sm8250-common
 $(call inherit-product, device/xiaomi/sm8250-common/kona.mk)
-# Call the MiuiCamera setup
-$(call inherit-product-if-exists, vendor/xiaomi/munch-miuicamera/products/miuicamera.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -32,6 +30,8 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Camera
+$(call inherit-product, device/xiaomi/munch-miuicamera/config.mk)
+
 PRODUCT_PACKAGES += \
     libpiex_shim
 
